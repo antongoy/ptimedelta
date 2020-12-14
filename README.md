@@ -8,6 +8,11 @@ Convert string time periods to timedelta objects and vice versa.
 ## Warning
 Project under a development.
 
+## Installation
+```shell script
+$ pip install ptimedelta
+```
+
 ## Examples
 ```pydocstring
 >>> import ptimedelta as ptd
