@@ -61,6 +61,30 @@ def to_timedelta(string):  # type (str) -> datetime.timedelta
     raise ValueError("Given string `%s` is an invalid time period." % string)
 
 
+def to_seconds(string, as_int=False):  # type (str, bool) -> Union[int, float]
+    """
+    Convert a duration represented by the `string` to the number of seconds.
+
+    :param string: Duration represented by a string
+    :type string: str
+    :param as_int: If equals to `True` the return value is casted to the integer
+    :type as_int: bool
+
+    Examples:
+    >>> import ptimedelta as ptd
+    >>> ptd.to_seconds("56m29s")
+    3389.0
+    >>> ptd.to_seconds("0s", as_int=True)
+    0
+    """
+    seconds = to_timedelta(string).total_seconds()
+
+    if as_int:
+        return int(seconds)
+    else:
+        return seconds
+
+
 def _doctest():  # type () -> None
     import doctest
 
