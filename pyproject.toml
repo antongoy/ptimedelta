@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ptimedelta"
-version = "0.1.0"
-description = "Pretty Timedelta. Convert your timedelta objects to the pretty strings and vice versa."
+version = "0.1.1"
+description = "Pretty Timedelta. Convert your timedelta objects to pretty strings and vice versa."
 authors = ["Anton Goy <g.a.s.s@mail.ru>"]
 license = "MIT"
 readme = "README.md"

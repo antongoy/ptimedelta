@@ -3,4 +3,4 @@
 ### Features
 - new top-level function `ptimedelta.to_seconds` 
 (wrapper for `ptimedelta.to_timedelta`)
-    - \#2 PR
+    - \#2 PR by @antongoy
