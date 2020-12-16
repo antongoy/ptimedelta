@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 import re
 import datetime
@@ -16,7 +16,7 @@ TIME_PERIOD_REGEX = (
 )
 
 
-def to_timedelta(string):  # type (str) -> datetime.timedelta
+def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     """
     Return the timedelta object derived from the string representation of a time period.
 
@@ -39,15 +39,15 @@ def to_timedelta(string):  # type (str) -> datetime.timedelta
     >>> ptd.to_timedelta(u"3m2s")
     datetime.timedelta(seconds=182)
     """
-    if not isinstance(string, string_types):
+    if not isinstance(time_period, string_types):
         raise TypeError(
-            "Valid data type is string but %s is given." % type(string).__name__
+            "Valid data type is string but %s is given." % type(time_period).__name__
         )
 
-    if not string:
+    if not time_period:
         raise ValueError("Empty string is an invalid time period.")
 
-    matched = re.match(TIME_PERIOD_REGEX, string)
+    matched = re.match(TIME_PERIOD_REGEX, time_period)
 
     if matched:
         return datetime.timedelta(
@@ -58,16 +58,16 @@ def to_timedelta(string):  # type (str) -> datetime.timedelta
             }
         )
 
-    raise ValueError("Given string `%s` is an invalid time period." % string)
+    raise ValueError("Given string `%s` is an invalid time period." % time_period)
 
 
-def to_seconds(string, as_int=False):  # type (str, bool) -> Union[int, float]
+def to_seconds(time_period, as_int=False):  # type (str, bool) -> Union[int, float]
     """
-    Convert a duration represented by the `string` to the number of seconds.
+    Convert a time period represented by a string to the number of seconds.
 
-    :param string: Duration represented by a string
-    :type string: str
-    :param as_int: If equals to `True` the return value is casted to the integer
+    :param time_period: Time period.
+    :type time_period: str
+    :param as_int: If equals to `True` the return value is casted to the integer.
     :type as_int: bool
 
     Examples:
@@ -77,7 +77,7 @@ def to_seconds(string, as_int=False):  # type (str, bool) -> Union[int, float]
     >>> ptd.to_seconds("0s", as_int=True)
     0
     """
-    seconds = to_timedelta(string).total_seconds()
+    seconds = to_timedelta(time_period).total_seconds()
 
     if as_int:
         return int(seconds)
