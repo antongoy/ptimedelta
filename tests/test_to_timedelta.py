@@ -11,6 +11,11 @@ class TestValidTimePeriods(unittest.TestCase):
     def test_only_seconds(self):
         self.assertEqual(to_timedelta("43s"), datetime.timedelta(seconds=43))
 
+    def test_period_with_milliseconds(self):
+        self.assertEqual(
+            to_timedelta("1h310ms"), datetime.timedelta(hours=1, milliseconds=310)
+        )
+
 
 class TestInvalidTimePeriods(unittest.TestCase):
     def test_none_instead_of_string(self):
