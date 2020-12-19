@@ -1,3 +1,9 @@
+# 0.1.2 - 2020-12-20
+
+### Features
+- add milliseconds support
+    - \#3 PR by @antongoy
+  
 # 0.1.1 - 2020-12-16
 
 ### Features

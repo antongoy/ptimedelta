@@ -12,6 +12,7 @@ TIME_PERIOD_REGEX = (
     r"((?P<hours>\d+)h)?"
     r"((?P<minutes>\d+)m)?"
     r"((?P<seconds>\d+)s)?"
+    r"((?P<milliseconds>\d+)ms)?"
     r"$"
 )
 
@@ -38,6 +39,11 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
 
     >>> ptd.to_timedelta(u"3m2s")
     datetime.timedelta(seconds=182)
+
+    Milliseconds are supported:
+
+    >>> ptd.to_timedelta("3s56ms")
+    datetime.timedelta(seconds=3, microseconds=56000)
     """
     if not isinstance(time_period, string_types):
         raise TypeError(
@@ -76,6 +82,8 @@ def to_seconds(time_period, as_int=False):  # type (str, bool) -> Union[int, flo
     3389.0
     >>> ptd.to_seconds("0s", as_int=True)
     0
+    >>> ptd.to_seconds("5s34ms")
+    5.034
     """
     seconds = to_timedelta(time_period).total_seconds()
 
