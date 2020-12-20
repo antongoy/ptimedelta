@@ -5,16 +5,17 @@ import datetime
 
 from .six import string_types
 
+NUMBER_REGEX = r"\d+(\.\d+)?"
 
 TIME_PERIOD_REGEX = (
     r"^"
-    r"((?P<days>\d+)d)?"
-    r"((?P<hours>\d+)h)?"
-    r"((?P<minutes>\d+)m)?"
-    r"((?P<seconds>\d+)s)?"
-    r"((?P<milliseconds>\d+)ms)?"
+    r"((?P<days>{number})d)?"
+    r"((?P<hours>{number})h)?"
+    r"((?P<minutes>{number})m)?"
+    r"((?P<seconds>{number})s)?"
+    r"((?P<milliseconds>{number})ms)?"
     r"$"
-)
+).format(number=NUMBER_REGEX)
 
 
 def to_timedelta(time_period):  # type (str) -> datetime.timedelta
@@ -44,6 +45,11 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
 
     >>> ptd.to_timedelta("3s56ms")
     datetime.timedelta(seconds=3, microseconds=56000)
+
+    And float point values too:
+
+    >>> ptd.to_timedelta("2.63ms")
+    datetime.timedelta(microseconds=2630)
     """
     if not isinstance(time_period, string_types):
         raise TypeError(
@@ -58,7 +64,7 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     if matched:
         return datetime.timedelta(
             **{
-                key: int(value)
+                key: float(value)
                 for key, value in matched.groupdict().items()
                 if value is not None
             }
