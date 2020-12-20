@@ -3,6 +3,8 @@
 ### Features
 - add milliseconds support
     - \#3 PR by @antongoy
+- add float numbers support
+    - \#4 PR by @antongoy
   
 # 0.1.1 - 2020-12-16
 

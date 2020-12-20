@@ -20,4 +20,6 @@ $ pip install ptimedelta
 datetime.timedelta(seconds=754)
 >>> ptd.to_seconds("3h23m4s", as_int=True)
 12184
+>>> ptd.to_seconds("3.96ms")
+0.00396
 ```
