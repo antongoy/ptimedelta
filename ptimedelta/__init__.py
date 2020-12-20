@@ -5,6 +5,8 @@ import datetime
 
 from .six import string_types
 
+MS_IN_SEC = 1000
+
 NUMBER_REGEX = r"\d+(\.\d+)?"
 
 TIME_PERIOD_REGEX = (
@@ -97,6 +99,31 @@ def to_seconds(time_period, as_int=False):  # type (str, bool) -> Union[int, flo
         return int(seconds)
     else:
         return seconds
+
+
+def to_milliseconds(time_period, as_int=False):
+    """
+    Convert a time period represented by a string to the number of milliseconds.
+
+    :param time_period: Time period.
+    :type time_period: str
+    :param as_int: If equals to `True` the return value is casted to the integer.
+    :type as_int: bool
+
+    Examples:
+    >>> import ptimedelta as ptd
+    >>> ptd.to_milliseconds("12.64ms")
+    12.64
+    >>> ptd.to_milliseconds('3.1472s', as_int=True)
+    3147
+    """
+    seconds = to_seconds(time_period, as_int=False)
+    milliseconds = seconds * MS_IN_SEC
+
+    if as_int:
+        return int(milliseconds)
+    else:
+        return milliseconds
 
 
 def _doctest():  # type () -> None
