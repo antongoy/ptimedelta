@@ -1,4 +1,4 @@
-# 0.1.2 - 2020-12-21
+# 0.1.2 - 2020-12-20
 
 ### Features
 - add milliseconds support
