@@ -1,0 +1,18 @@
+[[package]]
+name = "pytictoc"
+version = "1.5.1"
+description = "Time code using syntax similar to tic and toc in MATLAB"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "*"
+content-hash = "b34c5706db43773cce59519830db86e4e5b6e727fc197e66a50129b4b73ea33c"
+
+[metadata.files]
+pytictoc = [
+    {file = "pytictoc-1.5.1-py2.py3-none-any.whl", hash = "sha256:8b48bb39e9625b879527c92d0fdbad0b28b16a918c2891ffee35f5eea4c21ec5"},
+    {file = "pytictoc-1.5.1.tar.gz", hash = "sha256:3214dc7603095794178996c213ead519dd76107b353d5d0bc05a97d8af2774c3"},
+]
