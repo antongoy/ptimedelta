@@ -1,3 +1,13 @@
+# 0.1.3 - 2020-12-28
+
+### Features
+- add `to_milliseconds` function
+    - \#5 PR by @antongoy
+- add script for benchmarks
+    - \#6 PR by @antongoy
+- use compiled regexes for optimal performance
+    - \#7 PR by @antongoy  
+
 # 0.1.2 - 2020-12-20
 
 ### Features
