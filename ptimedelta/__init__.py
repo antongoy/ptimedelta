@@ -1,25 +1,11 @@
 __version__ = "0.1.3"
 
-import re
 import datetime
 
-from .six import string_types
+from ptimedelta.re import TIME_PERIOD_PATTERN
+from ptimedelta.six import string_types
 
 MS_IN_SEC = 1000
-
-NUMBER_REGEX = r"\d+(\.\d+)?"
-
-TIME_PERIOD_REGEX = (
-    r"^"
-    r"((?P<days>{number})d)?"
-    r"((?P<hours>{number})h)?"
-    r"((?P<minutes>{number})m)?"
-    r"((?P<seconds>{number})s)?"
-    r"((?P<milliseconds>{number})ms)?"
-    r"$"
-).format(number=NUMBER_REGEX)
-
-TIME_PERIOD_PATTERN = re.compile(TIME_PERIOD_REGEX)
 
 
 def to_timedelta(time_period):  # type (str) -> datetime.timedelta
