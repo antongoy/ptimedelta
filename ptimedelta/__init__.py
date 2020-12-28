@@ -19,6 +19,8 @@ TIME_PERIOD_REGEX = (
     r"$"
 ).format(number=NUMBER_REGEX)
 
+TIME_PERIOD_PATTERN = re.compile(TIME_PERIOD_REGEX)
+
 
 def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     """
@@ -61,7 +63,7 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     if not time_period:
         raise ValueError("Empty string is an invalid time period.")
 
-    matched = re.match(TIME_PERIOD_REGEX, time_period)
+    matched = TIME_PERIOD_PATTERN.match(time_period)
 
     if matched:
         return datetime.timedelta(
