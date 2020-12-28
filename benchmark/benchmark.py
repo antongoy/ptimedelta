@@ -42,6 +42,7 @@ def compute_avg(iterable):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--random-state", type=int, default=None)
+    parser.add_argument("--N", type=int, default=100)
     parser.add_argument("--n", type=int, default=100)
 
     args = parser.parse_args()
@@ -52,7 +53,7 @@ def main():
 
     avgs = []
 
-    for _ in range(100):
+    for _ in range(args.N):
 
         elapsed_times = []
 
