@@ -7,6 +7,7 @@ from pytictoc import TicToc
 
 import ptimedelta as ptd
 
+from ptimedelta.const import MS_IN_SEC
 
 Specifier = namedtuple("Specifier", field_names=["id", "name"])
 
@@ -67,7 +68,7 @@ def main():
 
         avgs.append(compute_avg(elapsed_times))
 
-    final_avg = round(compute_avg(avgs) * ptd.MS_IN_SEC, ndigits=4)
+    final_avg = round(compute_avg(avgs) * MS_IN_SEC, ndigits=4)
 
     print("Elapsed time: %sms" % final_avg)
 

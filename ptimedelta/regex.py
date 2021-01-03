@@ -18,11 +18,11 @@ TIME_PERIOD_REGEX = (
     r"({milliseconds})?"
     r"$"
 ).format(
-    days=_create_regex("days", specifier="d"),
-    hours=_create_regex("hours", specifier="h"),
-    minutes=_create_regex("minutes", specifier="m"),
-    seconds=_create_regex("seconds", specifier="s"),
-    milliseconds=_create_regex("milliseconds", specifier="ms"),
+    days=_create_regex("days", specifier="(d|day)"),
+    hours=_create_regex("hours", specifier="(h|hour)"),
+    minutes=_create_regex("minutes", specifier="(m|min)"),
+    seconds=_create_regex("seconds", specifier="(s|sec)"),
+    milliseconds=_create_regex("milliseconds", specifier="(ms|msec)"),
 )
 
 TIME_PERIOD_PATTERN = re.compile(TIME_PERIOD_REGEX)
