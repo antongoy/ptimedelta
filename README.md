@@ -4,9 +4,7 @@ Convert time periods represented by strings to timedelta objects and vice versa.
 
 ## Features
 1. Supports Python2.7, Python3+.
-
-## Warning
-Project under a development.
+2. Supports time periods with days, hours, minutes, seconds, milliseconds.
 
 ## Installation
 ```shell script
