@@ -1,3 +1,11 @@
+# 0.1.4 - 2021-01-04
+
+### Features
+- move all `to_*` function to `to.py`
+    - \#8 PR by @antongoy
+- add alternative period specifiers: `hour`, `day`, `min`, `sec`, `msec`
+    - \#8 PR by @antongoy
+  
 # 0.1.3 - 2020-12-28
 
 ### Features
