@@ -12,9 +12,3 @@ repos:
         language: python
         language_version: python3.9
         pass_filenames: false
-      - id: doctest
-        name: doctest
-        entry: python -m ptimedelta.__init__
-        language: python
-        language_version: python3.9
-        pass_filenames: false

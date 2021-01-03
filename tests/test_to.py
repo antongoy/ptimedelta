@@ -1,12 +1,17 @@
 import unittest
 import datetime
 
-from ptimedelta import to_timedelta
+from ptimedelta.to import to_timedelta, to_seconds, to_milliseconds
 
 
-class TestValidTimePeriods(unittest.TestCase):
+class TestToTimedelta(unittest.TestCase):
     def test_period_with_minutes(self):
         self.assertEqual(to_timedelta("3m4s"), datetime.timedelta(minutes=3, seconds=4))
+
+    def test_period_with_days(self):
+        self.assertEqual(
+            to_timedelta("5day44s"), datetime.timedelta(days=5, seconds=44)
+        )
 
     def test_only_seconds(self):
         self.assertEqual(to_timedelta("43s"), datetime.timedelta(seconds=43))
@@ -21,8 +26,6 @@ class TestValidTimePeriods(unittest.TestCase):
             to_timedelta("1m45.5s"), datetime.timedelta(minutes=1, seconds=45.5)
         )
 
-
-class TestInvalidTimePeriods(unittest.TestCase):
     def test_none_instead_of_string(self):
         with self.assertRaises(TypeError):
             to_timedelta(None)
@@ -54,3 +57,16 @@ class TestInvalidTimePeriods(unittest.TestCase):
     def test_random_string(self):
         with self.assertRaises(ValueError):
             to_timedelta("its just string")
+
+
+class TestToSeconds(unittest.TestCase):
+    def test_to_seconds(self):
+        self.assertEqual(to_seconds("12min"), 720.0)
+
+    def test_to_seconds_using_as_int(self):
+        self.assertEqual(to_seconds("1m45ms", as_int=True), 60)
+
+
+class TestToMilliseconds(unittest.TestCase):
+    def test_to_milliseconds(self):
+        self.assertEqual(to_milliseconds("8sec4msec"), 8004.0)
