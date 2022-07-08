@@ -4,6 +4,8 @@ repos:
     hooks:
       - id: black
         language_version: python3.9
+        args: [ "--line-length", "125" ]
+        additional_dependencies: [ 'click==8.0.4' ]
   - repo: local
     hooks:
       - id: unittest

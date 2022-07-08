@@ -1,3 +1,9 @@
+# 0.1.5 - 2022-07-08
+
+### Features
+- add to_iseconds and to_milliseconds functions
+  - \#9 PR by @antongoy
+
 # 0.1.4 - 2021-01-04
 
 ### Features
