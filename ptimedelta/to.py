@@ -39,9 +39,7 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     datetime.timedelta(microseconds=2630)
     """
     if not isinstance(time_period, string_types):
-        raise TypeError(
-            "Valid data type is string but %s is given." % type(time_period).__name__
-        )
+        raise TypeError("Valid data type is string but %s is given." % type(time_period).__name__)
 
     if not time_period:
         raise ValueError("Empty string is an invalid time period.")
@@ -49,13 +47,7 @@ def to_timedelta(time_period):  # type (str) -> datetime.timedelta
     matched = TIME_PERIOD_PATTERN.match(time_period)
 
     if matched:
-        return datetime.timedelta(
-            **{
-                key: float(value)
-                for key, value in matched.groupdict().items()
-                if value is not None
-            }
-        )
+        return datetime.timedelta(**{key: float(value) for key, value in matched.groupdict().items() if value is not None})
 
     raise ValueError("Given string `%s` is an invalid time period." % time_period)
 
@@ -86,6 +78,10 @@ def to_seconds(time_period, as_int=False):  # type (str, bool) -> Union[int, flo
         return seconds
 
 
+def to_iseconds(time_period):  # type (str) -> int
+    return to_seconds(time_period, as_int=True)
+
+
 def to_milliseconds(time_period, as_int=False):  # type (str, bool) -> Union[int, float]
     """
     Convert a time period represented by a string to the number of milliseconds.
@@ -109,3 +105,7 @@ def to_milliseconds(time_period, as_int=False):  # type (str, bool) -> Union[int
         return int(milliseconds)
     else:
         return milliseconds
+
+
+def to_imilliseconds(time_period):  # type (str) -> int
+    return to_milliseconds(time_period, as_int=True)
